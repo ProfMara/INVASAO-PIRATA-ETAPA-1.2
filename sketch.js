@@ -1,0 +1,49 @@
+const Engine = Matter.Engine;
+const World = Matter.World;
+const Bodies = Matter.Bodies;
+
+var engine, world, ground;
+var solo, parado;
+var cenario;
+var torre, torreIMG;
+
+function preload() {
+
+    cenario = loadImage("fundo.gif")
+  
+
+}
+
+function setup() {
+    canvas = createCanvas(1200, 600);
+    engine = Engine.create();
+    world = engine.world;
+
+    parado = { isStatic: true };
+
+    solo = Bodies.rectangle(width / 2, height - 2, width, 2, parado);
+    World.add(world, solo);
+
+    rectMode(CENTER)
+}
+
+function draw() {
+    Engine.update(engine);
+
+    //cenario
+    rect(width/2 ,height/2 ,width, height);
+
+    //torre
+    rect(160,350,160,310)
+
+    //solo
+    rect(solo.position.x, solo.position.y, width, 2);
+
+    //base do canhao
+    rect(165,120,200,200)
+   
+    //canhao
+    rect(180,110,130,110)
+
+
+}
